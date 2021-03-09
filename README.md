@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/chemdataextractor-api.svg)](https://badge.fury.io/py/chemdataextractor-api)
+
 # chemdataextractor-api
 A wrapper around ChemDataExtractor providing a REST API
 
@@ -9,7 +11,12 @@ A wrapper around ChemDataExtractor providing a REST API
 
 > docker run -p 8080:8080 lfoppiano/chemdataextractor-api:0.0.1
 
-### Local version 
+### pip 
+> conda create --name cde pip python=3.7
+
+> pip install chemdataextractor-api
+
+### Development
 
 > conda create --name cde pip python=3.7
 
