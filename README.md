@@ -5,6 +5,10 @@ A wrapper around ChemDataExtractor providing a REST API
 
 ### Docker 
 
+> docker pull lfoppiano/chemdataextractor-api:0.0.1
+
+> docker run -p 8080:8080 lfoppiano/chemdataextractor-api:0.0.1
+
 ### Local version 
 
 > conda create --name cde pip python=3.7
