@@ -19,7 +19,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name='chemdataextractor-api',
-    version='0.0.1',
+    version='1.0',
     description='Chemdataextractor REST API wrapper',
     url='https://github.com/lfoppiano/chemdataextractor-api',
     author='Luca Foppiano',
