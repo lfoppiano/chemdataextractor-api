@@ -7,9 +7,9 @@ A wrapper around ChemDataExtractor providing a REST API
 
 ### Docker 
 
-> docker pull lfoppiano/chemdataextractor-api:0.0.1
+> docker pull lfoppiano/chemdataextractor-api:1.0
 
-> docker run -p 8080:8080 lfoppiano/chemdataextractor-api:0.0.1
+> docker run -p 8080:8080 lfoppiano/chemdataextractor-api:1.0
 
 ### pip 
 > conda create --name cde pip python=3.7
@@ -44,12 +44,15 @@ optional arguments:
 
   URL    | Parameter name | Parameter type |
 ---------|----------------|----------------| 
-`/process`| text          |   form-data    | 
+`/process`| text          |   form-data (string)   | 
+`/process/single`| text          |   form-data (string)   | 
+`/process/bulk`| input          |   form-data (JSON list of strings)    | 
 
+(*) `/process` will be removed in future 
 
 Example: 
 
-> curl --location --request POST 'localhost:8080/process' \
+> curl --location --request POST 'localhost:8080/process/single' \
 --form 'text="The material BaFe 2 As 2 3 Ba has been studied for years. "'
 
 will return 
