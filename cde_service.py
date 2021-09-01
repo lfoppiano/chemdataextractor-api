@@ -1,7 +1,7 @@
 import argparse
 import json
 
-from bottle import route, request, run
+from bottle import route, request, run, abort
 from chemdataextractor import Document
 
 
@@ -15,6 +15,36 @@ def info():
 # def server_static(filename):
 #     return static_file(filename, root='webapp')
 
+
+@route('/process/single', method='POST')
+def process():
+    text = request.forms.get("text")
+
+    doc = Document.from_string(text.encode('utf-8'))
+    output = []
+
+    for cem in doc.cems:
+        output.append({'start': cem.start, 'end': cem.end, 'label': cem.text})
+
+    return json.dumps(output)
+
+@route('/process/bulk', method='POST')
+def process():
+    input = request.forms.get("input")
+
+    texts = []
+    try:
+        texts = json.loads(input)
+    except:
+        abort(400)
+
+    output = []
+    for text in texts:
+        doc = Document.from_string(text.encode('utf-8'))
+
+        output.append([{'start': cem.start, 'end': cem.end, 'label': cem.text} for cem in doc.cems])
+
+    return json.dumps(output)
 
 @route('/process', method='POST')
 def process():
